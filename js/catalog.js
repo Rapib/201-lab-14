@@ -15,6 +15,7 @@ function populateForm() {
     let optionElement = document.createElement('option')
     optionElement.value = i.name;
     optionElement.innerText = i.name;
+    console.log(optionElement.innerText);
     selectElement.appendChild(optionElement)
   }
 
@@ -25,7 +26,7 @@ function populateForm() {
 // so that it shows the # of items in the cart and a quick preview of the cart itself.
 function handleSubmit(event) {
 
-  // TODO: Prevent the page from reloading
+  // DONE: Prevent the page from reloading
   event.preventDefault();
 
   // Do all the things ...
@@ -49,7 +50,27 @@ function addSelectedItemToCart() {
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
+  let selectItem = document.getElementById('items').value;
+  let selectQuantity = document.getElementById('quantity').value;
+  console.log(selectQuantity);
   // TODO: Add a new element to the cartContents div with that information
+  let cartPreviewDiv = document.getElementById('cartContents');
+  let cartPreviewUl = document.createElement('ul');
+  cartPreviewDiv.appendChild(cartPreviewUl);
+  let cartPreviewLiItem = document.createElement('li');
+  cartPreviewLiItem.textContent = `Item: ${selectItem} | Quantity: ${selectQuantity} `;
+  // let cartPreviewLiQuantity = document.createElement('li');
+
+  // let cartPreviewLiItemPic = document.createElement('img');
+  // // let productImgSrc = state.allProducts.filePath;
+  // // cartPreviewLiItemPic.src = productImgSrc;
+
+  // cartPreviewLiQuantity.textcontent = selectQuantity;
+  // console.log(cartPreviewLiQuantity);
+  // console.log(cartPreviewLiQuantity.textcontent);
+  cartPreviewUl.appendChild(cartPreviewLiItem);
+  // cartPreviewUl.appendChild(cartPreviewLiQuantity);
+
 }
 
 // Set up the "submit" event listener on the form.
